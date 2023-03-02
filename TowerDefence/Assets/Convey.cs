@@ -15,7 +15,7 @@ public class Convey : MonoBehaviour
 {
     [SerializeField] private Vector3 force;
 
-    List<Rigidbody> currentPawns = new List<Rigidbody>();
+    List<GameObject> currentPawns = new List<GameObject>();
     public  directionOfMomentum movement;
 
     // Start is called before the first frame update
@@ -27,22 +27,10 @@ public class Convey : MonoBehaviour
     void Update()
     {
         CheckDirection();
-
-        foreach(Rigidbody thisRid in currentPawns)
-        {
-            thisRid.AddForce(force * 10 * Time.deltaTime);
-        }
     }
-
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionStay(Collision collision)
     {
-        currentPawns.Add(other.GetComponent<Rigidbody>());
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        currentPawns.Remove(other.GetComponent<Rigidbody>());
+        collision.gameObject.transform.position = collision.gameObject.transform.position + force * 2 * Time.deltaTime;
     }
 
     public void CheckDirection()

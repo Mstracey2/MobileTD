@@ -13,10 +13,13 @@ public class BuildingSystem : MonoBehaviour
     [SerializeField] private Tilemap mainTilemap;
     [SerializeField] private TileBase defualtTile;
 
+    public List<GameObject> gameObjectsInPlay = new List<GameObject>();
     public GameObject section1;
     public GameObject section2;
-
+    Vector3Int tilePos;
     public PlaceableTileObject placeableObject;
+
+    GameObject savedObjectMoved;
 
     private void Awake()
     {
@@ -65,7 +68,7 @@ public class BuildingSystem : MonoBehaviour
 
     public Vector3 SnapToGrid(Vector3 position)
     {
-        Vector3Int tilePos = layout.WorldToCell(position);
+        tilePos = layout.WorldToCell(position);
         position = currentGrid.GetCellCenterWorld(tilePos);
         return position;
     }
@@ -77,5 +80,34 @@ public class BuildingSystem : MonoBehaviour
         GameObject obj = Instantiate(pref, position, Quaternion.identity);
         placeableObject = obj.GetComponent<PlaceableTileObject>();
         obj.AddComponent<DragableObject>();
+    }
+
+    public void PlacedObjectLocationOnGrid(GameObject obj)
+    {
+        foreach (GameObject thisObj in gameObjectsInPlay)
+        {
+            if (thisObj == obj)
+            {
+                return;
+            }
+        }
+       
+        gameObjectsInPlay.Add(obj);
+    }
+
+    public void MovedObjectLocationOnGrid(GameObject obj)
+    {
+        Vector3Int movedObjPos = layout.WorldToCell(obj.transform.position);
+
+        foreach (GameObject thisObj in gameObjectsInPlay)
+        {
+            Vector3Int currentObjPos = layout.WorldToCell(thisObj.transform.position);
+            if (movedObjPos == currentObjPos && thisObj != obj)
+            {
+                gameObjectsInPlay.Remove(obj);
+                Destroy(obj);
+                return;
+            }
+        }
     }
 }

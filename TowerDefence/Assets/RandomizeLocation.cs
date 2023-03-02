@@ -23,6 +23,7 @@ public class RandomizeLocation : MonoBehaviour
 
         spawner.transform.position = BuildingSystem.currentSystem.SnapToGrid(randomPos);
         spawner.transform.position = new Vector3(spawner.transform.position.x, spawner.transform.position.y + 0.3f, spawner.transform.position.z);
+        BuildingSystem.currentSystem.PlacedObjectLocationOnGrid(this.gameObject);
     }
 
     // Update is called once per frame

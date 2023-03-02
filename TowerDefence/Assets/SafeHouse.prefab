@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3399420178237478171}
   - component: {fileID: 2118358831969286545}
   - component: {fileID: 1182548898369684974}
-  - component: {fileID: 6546984805096227288}
   m_Layer: 0
   m_Name: SafeHouse
   m_TagString: Untagged
@@ -119,18 +118,6 @@ MonoBehaviour:
   randomXLocation: {x: 0, y: 0, z: 0}
   randomYLocation: {x: 0, y: 0, z: 0}
   spawner: {fileID: 8474232068240302330}
---- !u!114 &6546984805096227288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8474232068240302330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f435bcb87646af45a1d5c526c331f17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8770499163355182824
 PrefabInstance:
   m_ObjectHideFlags: 0
