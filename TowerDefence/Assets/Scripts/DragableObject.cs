@@ -19,6 +19,7 @@ public class DragableObject : MonoBehaviour
         offset = transform.position - BuildingSystem.GetMousePosition();
         tapped = true;
         BuildingSystem.currentSystem.PlacedObjectLocationOnGrid(this.gameObject);
+        ScrollAndPinch.pinchSystem.draggingObject = true;
     }
     private void OnMouseUp()
     {
@@ -29,6 +30,7 @@ public class DragableObject : MonoBehaviour
         }
         buttonDownCounter = 0;
         BuildingSystem.currentSystem.MovedObjectLocationOnGrid(this.gameObject);
+        ScrollAndPinch.pinchSystem.draggingObject = false;
     }
 
     public void OnMouseDrag()
