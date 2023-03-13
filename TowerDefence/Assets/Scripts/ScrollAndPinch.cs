@@ -18,15 +18,11 @@ public class ScrollAndPinch : MonoBehaviour
             cam = Camera.main;
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+
 
         if (!draggingObject && !draggingUI)
         {
@@ -74,6 +70,7 @@ public class ScrollAndPinch : MonoBehaviour
 
 
     }
+
 
     protected Vector3 PlanePositionDelta(Touch touch)
     {

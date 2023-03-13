@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class GeneralPawnScript : MonoBehaviour
 {
-    [SerializeField] private GameObject safehouse;
-    [SerializeField] private GameObject groundPlane;
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject == groundPlane || collision.gameObject == safehouse)
-        {
-            Destroy(this.gameObject);
-        }
-        
-    }
+    [SerializeField] protected GameObject safehouse;
+    [SerializeField] protected GameObject groundPlane;
 
     public void getReferences(GameObject house, GameObject plane)
     {
