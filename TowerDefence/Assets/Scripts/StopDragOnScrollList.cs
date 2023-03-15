@@ -38,13 +38,28 @@ public class StopDragOnScrollList : MonoBehaviour
 
             //Raycast using the Graphics Raycaster and mouse click position
             m_Raycaster.Raycast(m_PointerEventData, results);
+
+        bool touchingUI = false;
             //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
             foreach (RaycastResult result in results)
             {
                 UIelement = result;
+                if(result.gameObject.name == "Scroll")
+                {
+                 ScrollAndPinch.pinchSystem.scrollingUI = true;
+                    touchingUI = true;
+                }
+               
+                
                 break;
                 
             }
+
+            if(touchingUI == false)
+            {
+                ScrollAndPinch.pinchSystem.scrollingUI = false;
+            }
+       
         return UIelement;
     }
 }

@@ -18,6 +18,7 @@ public class BuildingSystem : MonoBehaviour
     public GameObject section2;
     Vector3Int tilePos;
     public PlaceableTileObject placeableObject;
+    public bool buildMode;
 
     GameObject savedObjectMoved;
 
@@ -35,20 +36,6 @@ public class BuildingSystem : MonoBehaviour
         if (!placeableObject)
         {
             return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            placeableObject.Rotate();
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-                placeableObject.Place();
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Destroy(placeableObject.gameObject);
         }
     }
 
@@ -95,7 +82,7 @@ public class BuildingSystem : MonoBehaviour
         gameObjectsInPlay.Add(obj);
     }
 
-    public void MovedObjectLocationOnGrid(GameObject obj)
+    public bool MovedObjectLocationOnGrid(GameObject obj)
     {
         Vector3Int movedObjPos = layout.WorldToCell(obj.transform.position);
 
@@ -106,8 +93,21 @@ public class BuildingSystem : MonoBehaviour
             {
                 gameObjectsInPlay.Remove(obj);
                 Destroy(obj);
-                return;
+                return false;
             }
         }
+        return true;
+    }
+
+    public void ChangeMode()
+    {
+        buildMode = !buildMode;
+    }
+
+    public void AllowScroll()
+    {
+        ScrollAndPinch.pinchSystem.scrollingUI = false;
+        ScrollAndPinch.pinchSystem.draggingObject = false;
+        ScrollAndPinch.pinchSystem.draggingObject = false;
     }
 }

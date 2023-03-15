@@ -13,7 +13,11 @@ public class SetEnemy : Spawner
     public void PassThroughReferences(GameObject obj)
     {
         EnemyScript objPawn = obj.GetComponent<EnemyScript>();
-        objPawn.getReferences(safehouse, plane);
+        if(objPawn != null)
+        {
+            objPawn.getReferences(safehouse, plane);
+        }
+
 
     }
 }

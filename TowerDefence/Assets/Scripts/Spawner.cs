@@ -23,13 +23,22 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-
-        if(timer <= 0)
+        if(BuildingSystem.currentSystem.buildMode == false)
         {
-            newObj = Instantiate(spawnObject, transform.position, new Quaternion(0, 0, 0, 0));
-            del(newObj);
-            timer = 10;
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                SpawnObj(spawnObject);
+                del(newObj);
+                timer = 10;
+            }
         }
+
+    }
+
+    public GameObject SpawnObj(GameObject obj)
+    {
+        newObj = Instantiate(obj, transform.position, new Quaternion(0, 0, 0, 0));
+        return newObj;
     }
 }

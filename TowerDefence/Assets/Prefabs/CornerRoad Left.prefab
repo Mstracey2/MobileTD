@@ -109,14 +109,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834001757372138916}
-  m_LocalRotation: {x: -0, y: 0.6973231, z: -0, w: 0.71675706}
-  m_LocalPosition: {x: 0.548, y: 1.16, z: 0.03}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.454, y: 1.16, z: 0.027}
   m_LocalScale: {x: 1.0144088, y: 3.247274, z: 0.084434085}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6510102376795809640}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 88.425, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &5150360742922121170
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -356,7 +356,7 @@ BoxCollider:
   m_GameObject: {fileID: 3536519677302610597}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 0.99999994, z: 1}
   m_Center: {x: 0.00000023841858, y: 0.00000011920928, z: 0}
@@ -387,7 +387,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4415991596491101703}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.139, z: 0.54}
+  m_LocalPosition: {x: 0, y: 1.139, z: 0.468}
   m_LocalScale: {x: 1.0144088, y: 3.2269933, z: 0.084434085}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -566,14 +566,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6786784223038171380}
-  m_LocalRotation: {x: -0, y: 0.6973231, z: -0, w: 0.71675706}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.459, y: 0.44, z: -0}
   m_LocalScale: {x: 1.0144088, y: 0.14916028, z: 0.084434085}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6510102376795809640}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 88.425, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &7092854582558918872
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -633,7 +633,7 @@ BoxCollider:
   m_GameObject: {fileID: 6786784223038171380}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 0.99999994, z: 1}
   m_Center: {x: 0.00000023841858, y: 0.00000011920928, z: 0}
@@ -854,6 +854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcfdfc8b8eed6ee418c4c3c168c46b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonDownCounter: 0
 --- !u!65 &595958045465093771
 BoxCollider:
   m_ObjectHideFlags: 0

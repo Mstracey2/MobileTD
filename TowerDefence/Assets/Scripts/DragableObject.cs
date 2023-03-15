@@ -16,39 +16,55 @@ public class DragableObject : MonoBehaviour
     
     private void OnMouseDown()
     {
-        offset = transform.position - BuildingSystem.GetMousePosition();
-        tapped = true;
-        BuildingSystem.currentSystem.PlacedObjectLocationOnGrid(this.gameObject);
-        ScrollAndPinch.pinchSystem.draggingObject = true;
+        if (BuildingSystem.currentSystem.buildMode)
+        {
+            offset = transform.position - BuildingSystem.GetMousePosition();
+            tapped = true;
+            BuildingSystem.currentSystem.PlacedObjectLocationOnGrid(this.gameObject);
+            ScrollAndPinch.pinchSystem.draggingObject = true;
+        }
     }
+        
     private void OnMouseUp()
     {
-        tapped = false;
-        if (buttonDownCounter <=0.2)
+        if (BuildingSystem.currentSystem.buildMode)
         {
-            placedObject.Rotate();
+            tapped = false;
+            if (buttonDownCounter <= 0.2)
+            {
+                placedObject.Rotate();
+            }
+            buttonDownCounter = 0;
+            BuildingSystem.currentSystem.MovedObjectLocationOnGrid(this.gameObject);
+            ScrollAndPinch.pinchSystem.draggingObject = false;
         }
-        buttonDownCounter = 0;
-        BuildingSystem.currentSystem.MovedObjectLocationOnGrid(this.gameObject);
-        ScrollAndPinch.pinchSystem.draggingObject = false;
+       
     }
 
     public void OnMouseDrag()
     {
-        Vector3 pos = BuildingSystem.GetMousePosition() + offset;
-        transform.position = BuildingSystem.currentSystem.SnapToGrid(pos);
-        BuildingSystem.currentSystem.placeableObject = this.gameObject.GetComponent<PlaceableTileObject>();
+        if (BuildingSystem.currentSystem.buildMode)
+        {
+            Vector3 pos = BuildingSystem.GetMousePosition() + offset;
+            transform.position = BuildingSystem.currentSystem.SnapToGrid(pos);
+            BuildingSystem.currentSystem.placeableObject = this.gameObject.GetComponent<PlaceableTileObject>();
+        }
+        
     }
 
     private void Update()
     {
-        if (tapped)
+        if (BuildingSystem.currentSystem.buildMode)
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (tapped)
             {
-                buttonDownCounter += Time.deltaTime;
+                if (Input.GetKey(KeyCode.Mouse0))
+                {
+                    buttonDownCounter += Time.deltaTime;
+                }
             }
         }
+       
        
     }
 }

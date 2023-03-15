@@ -166,6 +166,7 @@ MonoBehaviour:
   spawnObject: {fileID: 9174447798364329704, guid: 40cd0224f013b524cb9e50fb4c3652b6, type: 3}
   safehouse: {fileID: 0}
   plane: {fileID: 0}
+  newObj: {fileID: 0}
 --- !u!1001 &2249028790387301179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -173,6 +174,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2249028790488484920}
     m_Modifications:
+    - target: {fileID: 72072277761191822, guid: 797a20f7a8d35ef499f6fcb33d0b319a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1261563260298267044, guid: 797a20f7a8d35ef499f6fcb33d0b319a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -215,6 +220,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1261563260298267044, guid: 797a20f7a8d35ef499f6fcb33d0b319a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100145542029138536, guid: 797a20f7a8d35ef499f6fcb33d0b319a, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3624711839927808278, guid: 797a20f7a8d35ef499f6fcb33d0b319a, type: 3}

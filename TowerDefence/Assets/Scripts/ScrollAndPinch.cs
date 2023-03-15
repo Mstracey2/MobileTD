@@ -9,6 +9,7 @@ public class ScrollAndPinch : MonoBehaviour
     protected Plane ground;
     public bool draggingObject;
     public bool draggingUI;
+    public bool scrollingUI;
     [SerializeField] private GameObject groundPlane;
     private void Awake()
     {
@@ -24,7 +25,7 @@ public class ScrollAndPinch : MonoBehaviour
     {
 
 
-        if (!draggingObject && !draggingUI)
+        if (!draggingObject && !draggingUI && !scrollingUI)
         {
             if (Input.touchCount >= 1)
             {
@@ -47,7 +48,6 @@ public class ScrollAndPinch : MonoBehaviour
             //pinch
             if (Input.touchCount >= 2)
             {
-                Debug.Log("two");
                 var pos1 = PlanePosition(Input.GetTouch(0).position);
                 var pos2 = PlanePosition(Input.GetTouch(1).position);
 

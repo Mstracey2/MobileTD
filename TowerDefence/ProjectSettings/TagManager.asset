@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - UIImage
+  - Enemy
   layers:
   - Default
   - TransparentFX

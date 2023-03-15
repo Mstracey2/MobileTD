@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class UIImageDrag : MonoBehaviour
 {
+    [SerializeField] private ScrollRect scrollbar;
     private Transform parent;
     [SerializeField] private StopDragOnScrollList uiList;
     private Vector2 pos;
@@ -49,7 +50,10 @@ public class UIImageDrag : MonoBehaviour
                         Vector3 mousePos = BuildingSystem.GetMousePosition();
                         GameObject newPrefab = Instantiate(prefab, mousePos, new Quaternion(0, 0, 0, 0));
                         newPrefab.transform.position = BuildingSystem.currentSystem.SnapToGrid(newPrefab.transform.position);
-                        BuildingSystem.currentSystem.MovedObjectLocationOnGrid(newPrefab);
+                     if (BuildingSystem.currentSystem.MovedObjectLocationOnGrid(newPrefab))
+                     {
+                        BuildingSystem.currentSystem.gameObjectsInPlay.Add(newPrefab);
+                     }
                     }
                 panelImage.enabled = false;
                 draggedOut = false;
@@ -61,6 +65,7 @@ public class UIImageDrag : MonoBehaviour
 
     public void ReturnImage()
     {
+        scrollbar.enabled = true;
         ScrollAndPinch.pinchSystem.draggingUI = false;
         transform.SetParent(parent, true);
         transform.localPosition = pos;
@@ -68,6 +73,7 @@ public class UIImageDrag : MonoBehaviour
 
     public void DragImage()
     {
+        scrollbar.enabled = false;
         ScrollAndPinch.pinchSystem.draggingUI = true;
         panelImage.enabled = true;
         gameObject.transform.position = Input.mousePosition;

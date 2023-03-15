@@ -26,7 +26,7 @@ public class Convey : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckDirection();
+            CheckDirection();
     }
     private void OnCollisionStay(Collision collision)
     {

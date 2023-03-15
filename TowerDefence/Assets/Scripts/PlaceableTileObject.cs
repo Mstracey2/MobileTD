@@ -18,11 +18,4 @@ public class PlaceableTileObject : MonoBehaviour
             road.ChangeDirection();
         }
     }
-
-    public virtual void Place()
-    {
-        DragableObject drag = gameObject.GetComponent<DragableObject>();
-        Destroy(drag);
-        placed = true;
-    }
 }
