@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseTurretScript : MonoBehaviour
 {
     protected List<GameObject> enemiesInView = new List<GameObject>();
-    [SerializeField] private GameObject barrel;
+    [SerializeField] private List<GameObject> barrel = new List<GameObject>();
     [SerializeField] private GameObject bullet;
     [SerializeField] private float cooldownLength;
     private float coolDown;
@@ -24,6 +24,12 @@ public class BaseTurretScript : MonoBehaviour
         {
             enemiesInView.Remove(other.gameObject);
         }
+    }
+
+    private void Update()
+    {
+        CheckForMissingObjects();
+        Timer();
     }
 
     public void Timer()
@@ -46,7 +52,11 @@ public class BaseTurretScript : MonoBehaviour
 
     public void Shoot()
     {
-            GameObject newBullet = Instantiate(bullet, barrel.transform.position, barrel.transform.rotation);
+        foreach(GameObject thisBarrel in barrel)
+        {
+            GameObject newBullet = Instantiate(bullet, thisBarrel.transform.position, thisBarrel.transform.rotation);
+        }
+           
     }
 
     public void CheckForMissingObjects()

@@ -16,6 +16,7 @@ public class Simulation : MonoBehaviour
     {
         simulate = true;
         enemyPrefab.running = true;
+        enemyPrefab.oldPos = enemyPrefab.transform.position;
         enemyPrefab.transform.position = enemySpawners[count].transform.position;
         Time.timeScale = 5f;
     }

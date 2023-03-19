@@ -11,10 +11,11 @@ public class ResourceScript : GeneralPawnScript
         if (collision.gameObject == safehouse)
         {
             safehouse.GetComponent<SafeHouseManager>().AddResourceToPlayerResourceInv(resource);
-        }
-        if (collision.gameObject == groundPlane || collision.gameObject == safehouse)
-        {
             Destroy(this.gameObject);
+        }
+        if (collision.gameObject == groundPlane)
+        {
+            transform.position = objectHome.transform.position;
         }
     }
 }

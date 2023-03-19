@@ -19,6 +19,7 @@ public class BuildingSystem : MonoBehaviour
     Vector3Int tilePos;
     public PlaceableTileObject placeableObject;
     public bool buildMode;
+    [SerializeField] private List<ResourceCounter> playerResources = new List<ResourceCounter>();
 
     GameObject savedObjectMoved;
 
@@ -92,6 +93,14 @@ public class BuildingSystem : MonoBehaviour
             if (movedObjPos == currentObjPos && thisObj != obj)
             {
                 gameObjectsInPlay.Remove(obj);
+                DragableObject objDrag = obj.GetComponent<DragableObject>();
+                foreach(ResourceCounter thisRes in playerResources)
+                {
+                    if (thisRes.GetResourceType() == objDrag.resource)
+                    {
+                        thisRes.counter += objDrag.resourceCost;
+                    }
+                }
                 Destroy(obj);
                 return false;
             }

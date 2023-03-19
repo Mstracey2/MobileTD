@@ -30,7 +30,11 @@ public class Convey : MonoBehaviour
     }
     private void OnCollisionStay(Collision collision)
     {
-        collision.gameObject.transform.position = collision.gameObject.transform.position + force * 2 * Time.deltaTime;
+        if(BuildingSystem.currentSystem.buildMode == false || collision.gameObject.name == "SimEnemy")
+        {
+            collision.gameObject.transform.position = collision.gameObject.transform.position + force * 2 * Time.deltaTime;
+        }
+       
     }
 
     public void CheckDirection()

@@ -111,7 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92bd2c94e8259974b811ce877476d19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barrel: {fileID: 7186497154214501590}
+  barrel:
+  - {fileID: 7186497154214501590}
   bullet: {fileID: 7805356671801646585, guid: 303f6ec551636a64e8057ce45ea47eff, type: 3}
   cooldownLength: 2
 --- !u!1 &6330126073680477654
@@ -358,6 +359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonDownCounter: 0
+  resourceCost: 20
+  resource: 1
 --- !u!114 &2524181500392135740
 MonoBehaviour:
   m_ObjectHideFlags: 0

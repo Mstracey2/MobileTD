@@ -15,7 +15,7 @@ public class SetEnemy : Spawner
         EnemyScript objPawn = obj.GetComponent<EnemyScript>();
         if(objPawn != null)
         {
-            objPawn.getReferences(safehouse, plane);
+            objPawn.getReferences(safehouse, plane, this.gameObject);
         }
 
 

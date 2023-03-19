@@ -23,9 +23,9 @@ public class EnemyScript : GeneralPawnScript
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == groundPlane || collision.gameObject == safehouse)
+        if (collision.gameObject == groundPlane)
         {
-            Destroy(this.gameObject);
+            transform.position = objectHome.transform.position;
         }
     }
 

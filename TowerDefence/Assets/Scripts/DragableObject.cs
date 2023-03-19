@@ -7,6 +7,8 @@ public class DragableObject : MonoBehaviour
     private Vector3 offset;
     public float buttonDownCounter = 0;
     private PlaceableTileObject placedObject;
+    public int resourceCost;
+    public ResourceType resource;
     bool tapped = false;
 
     private void Start()

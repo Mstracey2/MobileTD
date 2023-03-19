@@ -855,6 +855,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonDownCounter: 0
+  resourceCost: 10
+  resource: 0
 --- !u!65 &595958045465093771
 BoxCollider:
   m_ObjectHideFlags: 0

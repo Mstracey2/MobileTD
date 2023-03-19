@@ -15,7 +15,7 @@ public class SetResource : Spawner
     {
         ResourceScript objPawn = obj.GetComponent<ResourceScript>();
         objPawn.resource = resource;
-        objPawn.getReferences(safehouse, plane);
+        objPawn.getReferences(safehouse, plane, this.gameObject);
 
     }
 }
