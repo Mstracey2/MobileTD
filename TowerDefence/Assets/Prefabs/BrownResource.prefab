@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b587ea572e711b545b3fbbbe0f2bb0b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 9174447798364329704, guid: 7be608334b71ad94b8fe8a40691fffd0, type: 3}
-  safehouse: {fileID: 0}
-  plane: {fileID: 0}
+  defaultObject: {fileID: 9174447798364329704, guid: 40cd0224f013b524cb9e50fb4c3652b6, type: 3}
+  maxTime: 10
+  newObj: {fileID: 0}
   resource: 0
+  resourcepref: {fileID: 9174447798364329704, guid: 7be608334b71ad94b8fe8a40691fffd0, type: 3}
+  spawningObj: {fileID: 0}
+  switchObj: 1
 --- !u!1 &8557971315978527704
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +63,8 @@ GameObject:
   - component: {fileID: 8557971315978527707}
   - component: {fileID: 8557971315978527706}
   - component: {fileID: 8557971315978527705}
-  - component: {fileID: 8557971315978527269}
+  - component: {fileID: 6265350664298751886}
+  - component: {fileID: 7152250520471178280}
   m_Layer: 0
   m_Name: BrownResource
   m_TagString: Untagged
@@ -148,7 +152,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8557971315978527269
+--- !u!114 &6265350664298751886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,16 +161,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 8557971315978527704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cb8d557d87df5c4f87fde204c149597, type: 3}
+  m_Script: {fileID: 11500000, guid: cd0eaa3d6dde8474b9addac430860852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
-  xbound: {fileID: 0}
-  ybound: {fileID: 0}
-  xandybound: {fileID: 0}
-  randomXLocation: {x: 0, y: 0, z: 0}
-  randomYLocation: {x: 0, y: 0, z: 0}
-  spawner: {fileID: 8557971315978527704}
+  cost: 100
+--- !u!114 &7152250520471178280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8557971315978527704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7efb69521c9d28a428437d44267f7e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  road: {fileID: 0}
 --- !u!1001 &8557971316013659431
 PrefabInstance:
   m_ObjectHideFlags: 0

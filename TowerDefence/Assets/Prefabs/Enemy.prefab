@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 310797910714105435}
   - component: {fileID: 6104586577197111851}
   - component: {fileID: 526612391191445369}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 6151162754175061755}
   - component: {fileID: 8806499042319257282}
   - component: {fileID: -2069046575358708444}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -229,8 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a080f2d5c587243be520cc07ed345d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  safehouse: {fileID: 0}
-  groundPlane: {fileID: 0}
+  damage: 10
   healthBar: {fileID: 3605664338049342588}
 --- !u!1001 &1359617245638505231
 PrefabInstance:
@@ -354,6 +353,18 @@ PrefabInstance:
     - target: {fileID: 2970154767812379223, guid: 6e4e54ac4586f58469419be97a576b06, type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970154767812379223, guid: 6e4e54ac4586f58469419be97a576b06, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451922187473023086, guid: 6e4e54ac4586f58469419be97a576b06, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099766081629217779, guid: 6e4e54ac4586f58469419be97a576b06, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e4e54ac4586f58469419be97a576b06, type: 3}

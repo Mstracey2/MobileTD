@@ -34,10 +34,10 @@ public class DragableObject : MonoBehaviour
             tapped = false;
             if (buttonDownCounter <= 0.2)
             {
-                placedObject.Rotate();
+                placedObject.Rotate(90);
             }
             buttonDownCounter = 0;
-            BuildingSystem.currentSystem.MovedObjectLocationOnGrid(this.gameObject);
+            BuildingSystem.currentSystem.MovedObjectLocationOnGrid(this.gameObject, true);
             ScrollAndPinch.pinchSystem.draggingObject = false;
         }
        

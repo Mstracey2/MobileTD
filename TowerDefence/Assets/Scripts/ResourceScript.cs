@@ -1,21 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceScript : GeneralPawnScript
+public class ResourceScript : MonoBehaviour
 {
     public ResourceType resource;
+    private Vector3 objectHome;
+
+    private void Start()
+    {
+        objectHome = transform.position;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == safehouse)
+        if (collision.gameObject.CompareTag("SafeHouse"))
         {
-            safehouse.GetComponent<SafeHouseManager>().AddResourceToPlayerResourceInv(resource);
+            collision.gameObject.GetComponent<SafeHouseManager>().AddResourceToPlayerResourceInv(resource);
             Destroy(this.gameObject);
         }
-        if (collision.gameObject == groundPlane)
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            transform.position = objectHome.transform.position;
+            transform.position = objectHome;
         }
     }
 }

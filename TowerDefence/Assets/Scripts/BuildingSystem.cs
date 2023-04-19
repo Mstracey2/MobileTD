@@ -83,7 +83,7 @@ public class BuildingSystem : MonoBehaviour
         gameObjectsInPlay.Add(obj);
     }
 
-    public bool MovedObjectLocationOnGrid(GameObject obj)
+    public bool MovedObjectLocationOnGrid(GameObject obj, bool resource)
     {
         Vector3Int movedObjPos = layout.WorldToCell(obj.transform.position);
 
@@ -94,13 +94,21 @@ public class BuildingSystem : MonoBehaviour
             {
                 gameObjectsInPlay.Remove(obj);
                 DragableObject objDrag = obj.GetComponent<DragableObject>();
-                foreach(ResourceCounter thisRes in playerResources)
+                if (resource)
                 {
-                    if (thisRes.GetResourceType() == objDrag.resource)
+                    foreach (ResourceCounter thisRes in playerResources)
                     {
-                        thisRes.counter += objDrag.resourceCost;
+                        if (thisRes.GetResourceType() == objDrag.resource)
+                        {
+                            thisRes.counter += objDrag.resourceCost;
+                        }
                     }
                 }
+                else
+                {
+
+                }
+                
                 Destroy(obj);
                 return false;
             }

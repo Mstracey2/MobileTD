@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7065143763572232777}
   - component: {fileID: 6232692058931531557}
   - component: {fileID: 5077962453179601198}
-  - component: {fileID: 5464624556598289924}
+  - component: {fileID: 2874173759682971807}
   m_Layer: 2
   m_Name: Range
   m_TagString: Untagged
@@ -99,7 +99,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &5464624556598289924
+--- !u!114 &2874173759682971807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,13 +108,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5851501466692982519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92bd2c94e8259974b811ce877476d19f, type: 3}
+  m_Script: {fileID: 11500000, guid: 975d4fcef1d6df548bb864071eb89f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesInView: []
   barrel:
   - {fileID: 7186497154214501590}
   bullet: {fileID: 7805356671801646585, guid: 303f6ec551636a64e8057ce45ea47eff, type: 3}
-  cooldownLength: 2
+  cooldownLength: 1
 --- !u!1 &6330126073680477654
 GameObject:
   m_ObjectHideFlags: 0

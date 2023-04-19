@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] protected GameObject spawnObject;
-    [SerializeField] protected GameObject safehouse;
-    [SerializeField] protected GameObject plane;
+    [SerializeField] protected GameObject defaultObject;
     private Renderer rend;
     private Renderer spawnRend;
-    protected float timer = 10;
+    public float maxTime = 10;
+    protected float timer = 3;
     protected delegate void function(GameObject obj);
     protected function del;
     public GameObject newObj;
@@ -21,24 +20,31 @@ public class Spawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(BuildingSystem.currentSystem.buildMode == false)
+       
+        if (BuildingSystem.currentSystem.buildMode == false)
         {
             timer -= Time.deltaTime;
-            if (timer <= 0)
+            if (timer <= 0 && GameManager.manager.enemyCount != 0)
             {
-                SpawnObj(spawnObject);
-                del(newObj);
-                timer = 10;
+                RunSpawn(false, defaultObject);
             }
         }
-
     }
 
-    public GameObject SpawnObj(GameObject obj)
+
+    public GameObject RunSpawn(bool resource, GameObject objPref)
     {
-        newObj = Instantiate(obj, transform.position, new Quaternion(0, 0, 0, 0));
+        newObj = Instantiate(objPref, transform.position, new Quaternion(0, 0, 0, 0));
+        if (!resource)
+        {
+            GameManager.manager.enemyCount--;
+            GameManager.manager.enemiesInPlay.Add(newObj);
+        }
+        timer = Random.Range(1, maxTime);
         return newObj;
     }
+
+   
 }

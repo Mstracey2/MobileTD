@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SimulateEnemy : MonoBehaviour
@@ -8,7 +6,7 @@ public class SimulateEnemy : MonoBehaviour
     public bool success;
     public Vector3 returnPos;
     public Vector3 oldPos;
-    private float maxTime = 3;
+    public float maxTime = 6;
     public float timer;
     public float dis;
 
@@ -22,14 +20,14 @@ public class SimulateEnemy : MonoBehaviour
     {
         if (running)
         {
-            
+
             timer -= Time.deltaTime;
         }
-        
+
         if (timer <= 0)
         {
-             dis = Vector3.Distance(transform.position, oldPos);
-            if(dis < 7)
+            dis = Vector3.Distance(transform.position, oldPos);
+            if (dis < 3)
             {
                 success = false;
                 running = false;
@@ -43,12 +41,12 @@ public class SimulateEnemy : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "Ground")
+        if (collision.gameObject.name == "Ground")
         {
             success = false;
             running = false;
         }
-        else if(collision.gameObject.name == "SafeHouse")
+        else if (collision.gameObject.name == "SafeHouse")
         {
             success = true;
         }

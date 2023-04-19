@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Simulation : MonoBehaviour
 {
-    [SerializeField] private List<SetEnemy> enemySpawners = new List<SetEnemy>();
+    [SerializeField] public List<Spawner> enemySpawners = new List<Spawner>();
     [SerializeField] private SimulateEnemy enemyPrefab;
     GameObject en;
     bool simulate = false;
@@ -32,7 +31,9 @@ public class Simulation : MonoBehaviour
                     if (count < enemySpawners.Count)
                     {
                         count++;
-                        enemyPrefab.transform.position = enemySpawners[count-1].transform.position;
+                        enemyPrefab.transform.position = enemySpawners[count - 1].transform.position;
+                        enemyPrefab.timer = enemyPrefab.maxTime;
+                        enemyPrefab.oldPos = enemyPrefab.transform.position;
                         enemyPrefab.success = false;
                     }
                     else
@@ -54,11 +55,8 @@ public class Simulation : MonoBehaviour
                 count = 0;
             }
         }
-        
+
     }
-
-
-
 
     public void SuccessSim()
     {

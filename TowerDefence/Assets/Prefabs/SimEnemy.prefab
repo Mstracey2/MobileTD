@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6151162754175061755}
   - component: {fileID: 8806499042319257282}
   - component: {fileID: 7367512073536701043}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SimEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -127,4 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9870d8f459ab047b9626d88bd611e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  running: 0
+  success: 0
+  returnPos: {x: 0, y: 0, z: 0}
+  oldPos: {x: 0, y: 0, z: 0}
+  timer: 0
+  dis: 0

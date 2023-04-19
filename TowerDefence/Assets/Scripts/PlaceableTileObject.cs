@@ -9,9 +9,9 @@ public class PlaceableTileObject : MonoBehaviour
 
     [SerializeField] private Convey road;
 
-    public void Rotate()
+    public void Rotate(int amount)
     {
-        transform.Rotate(new Vector3(0, 90, 0));
+        transform.Rotate(new Vector3(0, amount, 0));
         size = new Vector3Int(size.y, size.x, 1);
         if(road != null)
         {

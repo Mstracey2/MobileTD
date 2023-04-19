@@ -7,6 +7,7 @@ public class builderUIScript : MonoBehaviour
 {
 
     [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject scroll;
     [SerializeField] private Color greyed;
     private Color backgroundColour;
 
@@ -15,8 +16,11 @@ public class builderUIScript : MonoBehaviour
         backgroundColour = GetComponent<Image>().color;
     }
 
-    public void ChangePanel(GameObject newPanel)
+    public void ChangePanel(GameObject newPanel, GameObject newScroll)
     {
+        newScroll.SetActive(true);
+        scroll.SetActive(false);
+        scroll = newScroll;
         panel.GetComponent<Image>().color = greyed;
         panel = newPanel;
         panel.GetComponent<Image>().color = backgroundColour;

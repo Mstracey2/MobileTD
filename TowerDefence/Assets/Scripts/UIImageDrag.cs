@@ -25,8 +25,7 @@ public class UIImageDrag : MonoBehaviour
     private TMP_Text visualText;
     // Start is called before the first frame update
     void Start()
-    {
-        
+    { 
         uiDragImage = GetComponent<Image>();
         panelImage = panelDrop.GetComponent<Image>();
         pos = transform.localPosition;
@@ -83,9 +82,9 @@ public class UIImageDrag : MonoBehaviour
                     {
                         Vector3 mousePos = BuildingSystem.GetMousePosition();
                         GameObject newPrefab = Instantiate(prefab, mousePos, new Quaternion(0, 0, 0, 0));
-                    counterRes.counter = counterRes.counter - prefabDrag.resourceCost;
+                        counterRes.counter = counterRes.counter - prefabDrag.resourceCost;
                         newPrefab.transform.position = BuildingSystem.currentSystem.SnapToGrid(newPrefab.transform.position);
-                     if (BuildingSystem.currentSystem.MovedObjectLocationOnGrid(newPrefab))
+                     if (BuildingSystem.currentSystem.MovedObjectLocationOnGrid(newPrefab, true))
                      {
                         BuildingSystem.currentSystem.gameObjectsInPlay.Add(newPrefab);
                      }
