@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     protected delegate void function(GameObject obj);
     protected function del;
     public GameObject newObj;
+    public bool activated;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class Spawner : MonoBehaviour
     private void Update()
     {
        
-        if (BuildingSystem.currentSystem.buildMode == false)
+        if (BuildingSystem.currentSystem.buildMode == false && activated)
         {
             timer -= Time.deltaTime;
             if (timer <= 0 && GameManager.manager.enemyCount != 0)
@@ -46,5 +47,5 @@ public class Spawner : MonoBehaviour
         return newObj;
     }
 
-   
+
 }

@@ -18,11 +18,15 @@ public class builderUIScript : MonoBehaviour
 
     public void ChangePanel(GameObject newPanel, GameObject newScroll)
     {
-        newScroll.SetActive(true);
-        scroll.SetActive(false);
-        scroll = newScroll;
-        panel.GetComponent<Image>().color = greyed;
-        panel = newPanel;
-        panel.GetComponent<Image>().color = backgroundColour;
+        if(newScroll != scroll)
+        {
+            newScroll.SetActive(true);
+            scroll.SetActive(false);
+            scroll = newScroll;
+            panel.GetComponent<Image>().color = greyed;
+            panel = newPanel;
+            panel.GetComponent<Image>().color = backgroundColour;
+        }
+       
     }
 }

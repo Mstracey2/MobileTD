@@ -13,9 +13,8 @@ public class UIImageDrag : MonoBehaviour
     private bool draggedOut;
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject panelDrop;
-    [SerializeField] private List<ResourceCounter> resources = new List<ResourceCounter>();
     private DragableObject prefabDrag;
-    private ResourceCounter counterRes;
+    public ResourceCounter counterRes;
     private Image panelImage;
     private Image uiDragImage;
     [SerializeField] private Color greyedOut;
@@ -31,14 +30,6 @@ public class UIImageDrag : MonoBehaviour
         pos = transform.localPosition;
         parent = transform.parent;
         prefabDrag = prefab.GetComponent<DragableObject>();
-        foreach (ResourceCounter res in resources)
-        {
-            if (res.GetResourceType() == prefabDrag.resource)
-            {
-                counterRes = res;
-            }
-        }
-
         visualColour = resourceCostVisual.GetComponent<Image>();
         visualText = resourceCostVisual.GetComponentInChildren<TMP_Text>();
         visualColour.color = counterRes.resourceColour;

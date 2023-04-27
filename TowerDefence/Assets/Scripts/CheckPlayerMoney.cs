@@ -8,7 +8,7 @@ public class CheckPlayerMoney : MonoBehaviour
 {
     [SerializeField] private Inventory playerInv;
     [SerializeField] private GameObject pref;
-    private Resource prefResource;
+    private ResourceController prefResource;
     [SerializeField] private Color greyedOut;
     [SerializeField] private Color selectable;
     private Image buttonImage;
@@ -18,7 +18,7 @@ public class CheckPlayerMoney : MonoBehaviour
     {
         sim = GetComponent<SendToSim>();
         costText = GetComponentInChildren<TMP_Text>();
-        prefResource = pref.GetComponent<Resource>();
+        prefResource = pref.GetComponent<ResourceController>();
         buttonImage = GetComponent<Image>();
         costText.text = "£" + prefResource.cost;
     }

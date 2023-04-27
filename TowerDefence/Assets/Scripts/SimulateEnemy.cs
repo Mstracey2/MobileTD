@@ -46,7 +46,12 @@ public class SimulateEnemy : MonoBehaviour
             success = false;
             running = false;
         }
-        else if (collision.gameObject.name == "SafeHouse")
+       
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "SafeHouse")
         {
             success = true;
         }

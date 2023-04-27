@@ -33,10 +33,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         checkRoundChange();
-        UpdateEnemiesInPlay();
+       
     }
 
-    private void UpdateEnemiesInPlay()
+    public void UpdateEnemiesInPlay()
     {
         foreach (GameObject thisObj in enemiesInPlay)
         {
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject newSpawner = Instantiate(spawnerPrefabs[Random.Range(0, spawnerPrefabs.Count - 1)]);
         RandomizeLocation.randomLocation.RandomizeobjectLocation(newSpawner);
-        sim.enemySpawners.Add(newSpawner.GetComponentInChildren<Spawner>());
+        sim.spawners.Add(newSpawner.GetComponentInChildren<Spawner>());
     }
 
     public void BeginRound()

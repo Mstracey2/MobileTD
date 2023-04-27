@@ -24,7 +24,6 @@ public class ScrollAndPinch : MonoBehaviour
     void Update()
     {
 
-
         if (!draggingObject && !draggingUI && !scrollingUI)
         {
             if (Input.touchCount >= 1)

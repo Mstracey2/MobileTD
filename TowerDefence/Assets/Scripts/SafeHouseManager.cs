@@ -40,6 +40,7 @@ public class SafeHouseManager : MonoBehaviour
             TakeDamage(collision.gameObject);
             bar.SetHealth(health);
             Destroy(collision.gameObject);
+            GameManager.manager.UpdateEnemiesInPlay();
         }
     }
     public void AddResourceToPlayerResourceInv(ResourceType resource)

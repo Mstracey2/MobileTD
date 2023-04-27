@@ -14,7 +14,7 @@ public class SetResource : Spawner
 
     private void Update()
     {
-        if (BuildingSystem.currentSystem.buildMode == false)
+        if (BuildingSystem.currentSystem.buildMode == false && activated)
         {
             timer -= Time.deltaTime;
             if (timer <= 0 && GameManager.manager.enemyCount != 0)

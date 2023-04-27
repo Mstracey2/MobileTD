@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Simulation : MonoBehaviour
 {
-    [SerializeField] public List<Spawner> enemySpawners = new List<Spawner>();
+    [SerializeField] public List<Spawner> spawners = new List<Spawner>();
     [SerializeField] private SimulateEnemy enemyPrefab;
     GameObject en;
     bool simulate = false;
@@ -16,7 +16,7 @@ public class Simulation : MonoBehaviour
         simulate = true;
         enemyPrefab.running = true;
         enemyPrefab.oldPos = enemyPrefab.transform.position;
-        enemyPrefab.transform.position = enemySpawners[count].transform.position;
+        enemyPrefab.transform.position = spawners[count].transform.position;
         Time.timeScale = 5f;
     }
 
@@ -28,13 +28,17 @@ public class Simulation : MonoBehaviour
             {
                 if (enemyPrefab.success)
                 {
-                    if (count < enemySpawners.Count)
+                    if (count < spawners.Count)
                     {
                         count++;
-                        enemyPrefab.transform.position = enemySpawners[count - 1].transform.position;
-                        enemyPrefab.timer = enemyPrefab.maxTime;
-                        enemyPrefab.oldPos = enemyPrefab.transform.position;
-                        enemyPrefab.success = false;
+                        if(spawners[count-1].activated == true)
+                        {
+                            enemyPrefab.transform.position = spawners[count - 1].transform.position;
+                            enemyPrefab.timer = enemyPrefab.maxTime;
+                            enemyPrefab.oldPos = enemyPrefab.transform.position;
+                            enemyPrefab.success = false;
+                        }
+                        
                     }
                     else
                     {
