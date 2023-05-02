@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class BurstTurret : BaseTurretScript
 {
-
-    private int burst = 2;
+    private int burst = 2;      //number of bullets on burst
 
 
     // Update is called once per frame
@@ -16,6 +15,10 @@ public class BurstTurret : BaseTurretScript
         BurstCountDownCheck();
     }
 
+
+    /// <summary>
+    /// special function for the burst turret that checks cooldown, then fires a number of amount of bullets in a single burst
+    /// </summary>
     public void BurstCountDownCheck()
     {
         if (enemiesInView.Count != 0 && BuildingSystem.currentSystem.buildMode == false)
@@ -32,12 +35,16 @@ public class BurstTurret : BaseTurretScript
     }
 
 
+    /// <summary>
+    /// fires a burst of bullets through a coroutine
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator BurstDelay()
     {
         for (int i = 0; i <= burst; i++)
         {
             Shoot();
-            coolDown = cooldownLength;
+            coolDown = cooldownLength;                      //turret on cooldown
             yield return new WaitForSeconds(0.2f);
         }
 

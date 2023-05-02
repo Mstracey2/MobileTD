@@ -7,6 +7,6 @@ public class BillBoard : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.LookAt(transform.position + Camera.main.transform.forward);
+        transform.LookAt(transform.position + Camera.main.transform.forward);                   //updates world space UI to look at the camera
     }
 }

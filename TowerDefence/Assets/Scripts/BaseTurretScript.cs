@@ -5,7 +5,7 @@ public class BaseTurretScript : MonoBehaviour
 {
     [SerializeField] protected List<GameObject> enemiesInView = new List<GameObject>();             //keeps track of enimies in vision
     [SerializeField] private List<GameObject> barrel = new List<GameObject>();                      //each barrel that the turret shoots out of
-    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject bullet;                                                     
     [SerializeField] protected float cooldownLength;
     protected float coolDown;
 
@@ -33,6 +33,9 @@ public class BaseTurretScript : MonoBehaviour
         CheckCooldown();
     }
 
+    /// <summary>
+    /// basic cooldown check method, if cooldown is 0, it will shoot.
+    /// </summary>
     public void CheckCooldown()
     {
         if (enemiesInView.Count != 0 && BuildingSystem.currentSystem.buildMode == false)            
@@ -40,7 +43,7 @@ public class BaseTurretScript : MonoBehaviour
             if (coolDown <= 0)
             {
                 Shoot();
-                coolDown = cooldownLength;
+                coolDown = cooldownLength;                                                          //resets cooldown
             }
         }
         else
@@ -50,6 +53,10 @@ public class BaseTurretScript : MonoBehaviour
 
     }
 
+
+    /// <summary>
+    /// instansiates a new bullet at the location of each barrel end.
+    /// </summary>
     public void Shoot()
     {
         foreach (GameObject thisBarrel in barrel)
@@ -59,6 +66,10 @@ public class BaseTurretScript : MonoBehaviour
 
     }
 
+
+    /// <summary>
+    /// this is a function that will check for any objects that are missing in the list, its a failsafe to stop the list from having troubles searching for null variables.
+    /// </summary>
     public void CheckForMissingObjects()
     {
         foreach (GameObject thisEnemy in enemiesInView)
@@ -71,9 +82,13 @@ public class BaseTurretScript : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// updates the rotation of the object to look the first enemy on the list.
+    /// </summary>
     public void LookAtObject()
     {
-        if (enemiesInView.Count != 0 && enemiesInView[0] != null)
+        if (enemiesInView.Count != 0 && enemiesInView[0] != null)                       //will not run if no targets are in sight
         {
             Transform targetAxis = enemiesInView[0].transform;
             transform.parent.LookAt(new Vector3(targetAxis.position.x, transform.parent.position.y, targetAxis.position.z));
