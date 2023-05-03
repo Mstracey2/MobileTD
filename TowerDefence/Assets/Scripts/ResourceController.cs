@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class ResourceController : MonoBehaviour
 {
-    public int cost;
-
+    public int cost;        //cost of the resource
 }

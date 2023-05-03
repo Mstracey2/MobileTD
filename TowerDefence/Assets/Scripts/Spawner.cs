@@ -20,10 +20,12 @@ public class Spawner : MonoBehaviour
         rend = transform.parent.GetComponent<Renderer>();
     }
 
+    /// <summary>
+    /// default update for basic spawner, will countdown then spawn object
+    /// </summary>
     // Update is called once per frame
     private void Update()
     {
-       
         if (BuildingSystem.currentSystem.buildMode == false && activated)
         {
             timer -= Time.deltaTime;
@@ -35,10 +37,16 @@ public class Spawner : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// function for instantiating a new game object
+    /// </summary>
+    /// <param name="resource"></param>
+    /// <param name="objPref"></param>
+    /// <returns></returns>
     public GameObject RunSpawn(bool resource, GameObject objPref)
     {
         newObj = Instantiate(objPref, transform.position, new Quaternion(0, 0, 0, 0));
-        if (!resource)
+        if (!resource)// if its an enemy
         {
             GameManager.manager.enemyCount--;
             GameManager.manager.enemiesInPlay.Add(newObj);

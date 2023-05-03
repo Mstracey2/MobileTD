@@ -8,13 +8,13 @@ public class UIImageDrag : MonoBehaviour
 {
     [SerializeField] private ScrollRect scrollbar;
     private Transform parent;
-    [SerializeField] private StopDragOnScrollList uiList;
+    [SerializeField] private StopDragOnScrollList uiList;           //things the raycast is over in ui
     private Vector2 pos;
-    private bool draggedOut;
+    private bool draggedOut;                                        //dragged out UI
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject panelDrop;
-    private DragableObject prefabDrag;
-    public ResourceCounter counterRes;
+    private DragableObject prefabDrag;                              //prefab that is set to the dragged image
+    public ResourceCounter counterRes;                              //player resources
     private Image panelImage;
     private Image uiDragImage;
     [SerializeField] private Color greyedOut;
@@ -39,7 +39,7 @@ public class UIImageDrag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(counterRes.counter < prefabDrag.resourceCost)
+        if(counterRes.counter < prefabDrag.resourceCost)            //greys out images that are not available
         {
             uiDragImage.color = greyedOut;
         }
@@ -52,7 +52,7 @@ public class UIImageDrag : MonoBehaviour
          {
             foreach (RaycastResult result in uiList.results)
             {
-                if (result.gameObject == this.gameObject)
+                if (result.gameObject == this.gameObject)             //if raycast has hit this object, then drag the image
                 {
                     DragImage();
                     draggedOut = true;
@@ -63,10 +63,10 @@ public class UIImageDrag : MonoBehaviour
          }
          else
          {
-            uiList.results.Clear();
+            uiList.results.Clear();                             //else, clear the UI list of raycast hits and return the image back to its normal position
             ReturnImage();
 
-            if (draggedOut)
+            if (draggedOut)                                     //if it was dragged out, then spawn the new object in the image's position on the grid
             {
                RaycastResult hit = uiList.MouseRaycast();
                     if(hit.gameObject == panelDrop.gameObject)
@@ -88,6 +88,9 @@ public class UIImageDrag : MonoBehaviour
        
     }
 
+    /// <summary>
+    /// function that returns the draggable image back to its position if the player lets go
+    /// </summary>
     public void ReturnImage()
     {
         scrollbar.enabled = true;
@@ -96,6 +99,9 @@ public class UIImageDrag : MonoBehaviour
         transform.localPosition = pos;
     }
 
+    /// <summary>
+    /// function that drags the image
+    /// </summary>
     public void DragImage()
     {
         scrollbar.enabled = false;

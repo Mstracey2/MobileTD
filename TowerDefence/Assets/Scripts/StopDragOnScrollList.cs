@@ -49,10 +49,7 @@ public class StopDragOnScrollList : MonoBehaviour
                  ScrollAndPinch.pinchSystem.scrollingUI = true;
                     touchingUI = true;
                 }
-               
-                
                 break;
-                
             }
 
             if(touchingUI == false)

@@ -16,6 +16,9 @@ public class DragableObject : MonoBehaviour
         placedObject = GetComponent<PlaceableTileObject>();
     }
     
+    /// <summary>
+    /// gets what the player pressed so its ready to be dragged.
+    /// </summary>
     private void OnMouseDown()
     {
         if (BuildingSystem.currentSystem.buildMode)
@@ -27,14 +30,17 @@ public class DragableObject : MonoBehaviour
         }
     }
         
+    /// <summary>
+    /// places the object back down on the grid
+    /// </summary>
     private void OnMouseUp()
     {
         if (BuildingSystem.currentSystem.buildMode)
         {
             tapped = false;
-            if (buttonDownCounter <= 0.2)
+            if (buttonDownCounter <= 0.2)           //if the player tapped the object
             {
-                placedObject.Rotate(90);
+                placedObject.Rotate(90);            //rotate the object
             }
             buttonDownCounter = 0;
             BuildingSystem.currentSystem.MovedObjectLocationOnGrid(this.gameObject, true);
@@ -43,6 +49,9 @@ public class DragableObject : MonoBehaviour
        
     }
 
+    /// <summary>
+    /// drags the object accross the grid
+    /// </summary>
     public void OnMouseDrag()
     {
         if (BuildingSystem.currentSystem.buildMode)
@@ -62,7 +71,7 @@ public class DragableObject : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.Mouse0))
                 {
-                    buttonDownCounter += Time.deltaTime;
+                    buttonDownCounter += Time.deltaTime;            //sets of a counter to check for tapping objects
                 }
             }
         }

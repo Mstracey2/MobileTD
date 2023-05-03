@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// enum for direction of the road movement flow
+/// </summary>
 public enum directionOfMomentum
 {
     up = 1,
@@ -14,29 +17,27 @@ public enum directionOfMomentum
 public class Convey : MonoBehaviour
 {
     [SerializeField] private Vector3 force;
-
-    List<GameObject> currentPawns = new List<GameObject>();
-    public  directionOfMomentum movement;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    public directionOfMomentum movement;
 
     // Update is called once per frame
     void Update()
     {
-            CheckDirection();
+      CheckDirection();
     }
+
     private void OnCollisionStay(Collision collision)
     {
-        if(BuildingSystem.currentSystem.buildMode == false || collision.gameObject.name == "SimEnemy")
+        if(BuildingSystem.currentSystem.buildMode == false || collision.gameObject.name == "SimEnemy")          //will add force to any rigid body if not in build mode or sim mode
         {
             collision.gameObject.transform.position = collision.gameObject.transform.position + force * 2 * Time.deltaTime;
         }
        
     }
 
+
+    /// <summary>
+    /// changes force direction depending on the enum variable direction
+    /// </summary>
     public void CheckDirection()
     {
         if(movement == directionOfMomentum.up)
@@ -57,11 +58,12 @@ public class Convey : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// function to change the direction of movement if the road is rotated
+    /// </summary>
     public void ChangeDirection()
-    {
-        
-        if (movement.Equals(directionOfMomentum.left))
+    { 
+        if (movement.Equals(directionOfMomentum.left)) // if the direction is left, it will loop back to the first enum (up).
         {
             movement = directionOfMomentum.up;
         }

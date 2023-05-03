@@ -11,6 +11,10 @@ public class Simulation : MonoBehaviour
     int count = 0;
     public UnityEvent onSuccess;
     public UnityEvent onFail;
+
+    /// <summary>
+    /// function that starts the simulation
+    /// </summary>
     public void StartSim()
     {
         simulate = true;
@@ -24,11 +28,11 @@ public class Simulation : MonoBehaviour
     {
         if (simulate)
         {
-            if (enemyPrefab.running)
+            if (enemyPrefab.running) //continues if running
             {
-                if (enemyPrefab.success)
+                if (enemyPrefab.success)    //changes path it successful
                 {
-                    if (count < spawners.Count)
+                    if (count < spawners.Count) //path is next on list
                     {
                         count++;
                         if(spawners[count-1].activated == true)
@@ -42,7 +46,7 @@ public class Simulation : MonoBehaviour
                     }
                     else
                     {
-                        SuccessSim();
+                        SuccessSim();           //if no other paths, then the simulation was succesful
                         Time.timeScale = 1f;
                         enemyPrefab.transform.position = enemyPrefab.returnPos;
                         simulate = false;
@@ -52,7 +56,7 @@ public class Simulation : MonoBehaviour
             }
             else
             {
-                FailedSim();
+                FailedSim();                //if simulating but not running, the sim has failed.
                 Time.timeScale = 1f;
                 enemyPrefab.transform.position = enemyPrefab.returnPos;
                 simulate = false;

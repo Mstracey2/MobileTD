@@ -14,6 +14,10 @@ public class HealthBar : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// function to set max health on the bar
+    /// </summary>
+    /// <param name="maxHealth"></param>
     public void SetMaxHealth(float maxHealth)
     {
         slider.maxValue = maxHealth;
@@ -21,15 +25,15 @@ public class HealthBar : MonoBehaviour
         fill.color = gradient.Evaluate(1f);
     }
 
+
+    /// <summary>
+    /// function to update the health on the bar
+    /// </summary>
+    /// <param name="health"></param>
     public void SetHealth(float health)
     {
         slider.value = health;
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

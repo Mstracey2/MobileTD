@@ -29829,8 +29829,6 @@ MonoBehaviour:
   - {fileID: 683460497}
   - {fileID: 663292118}
   - {fileID: 1003521105}
-  section1: {fileID: 3624711839927808278, guid: 797a20f7a8d35ef499f6fcb33d0b319a, type: 3}
-  section2: {fileID: 8760889621326897114, guid: 71b610e252225b141b4580a5b7a4ad78, type: 3}
   placeableObject: {fileID: 0}
   buildMode: 1
   playerResources:

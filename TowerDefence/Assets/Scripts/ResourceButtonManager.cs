@@ -14,6 +14,9 @@ public class ResourceButtonManager : MonoBehaviour
         buttonImage = GetComponent<Image>();   
     }
 
+    /// <summary>
+    /// activates only when in build mode
+    /// </summary>
     private void Update()
     {
         if (BuildingSystem.currentSystem.buildMode)
@@ -25,6 +28,7 @@ public class ResourceButtonManager : MonoBehaviour
             this.gameObject.SetActive(false);
         }
     }
+
 
     public void Pressed(TMP_Text buttonText)
     {

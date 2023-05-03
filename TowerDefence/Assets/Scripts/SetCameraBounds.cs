@@ -10,6 +10,10 @@ public class SetCameraBounds : MonoBehaviour
     [SerializeField] private GameObject xandzbound;
     [SerializeField] private GameObject yBound;
 
+
+    /// <summary>
+    /// update is used here to limit how far the camera can go, they cannot go beyond the map
+    /// </summary>
     private void Update()
     {
         if(transform.position.y >= yBound.transform.position.y)

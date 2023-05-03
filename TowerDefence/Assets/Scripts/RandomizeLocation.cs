@@ -13,6 +13,7 @@ public class RandomizeLocation : MonoBehaviour
     }
 
     [SerializeField] private Tilemap tilemap;
+    // locations that restrict the random location from being off the map
     [SerializeField] private GameObject xbound;
     [SerializeField]private GameObject ybound;
     [SerializeField] private GameObject xandybound;
@@ -21,27 +22,34 @@ public class RandomizeLocation : MonoBehaviour
     [SerializeField] private Vector3 randomYLocation;
 
     private bool locationFound;
+
+    /// <summary>
+    /// starts a coroutine to randomize the objects locations
+    /// </summary>
+    /// <param name="obj"></param>
     public void RandomizeobjectLocation(GameObject obj)
     {
         locationFound = false;
         StartCoroutine(randomize(obj));
     }
 
+    /// <summary>
+    /// process of placing the spawner in a random location
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <returns></returns>
     private IEnumerator randomize(GameObject obj)
     {
         while(locationFound == false)
         {
             randomXLocation.x = Random.Range(xbound.transform.position.x, xandybound.transform.position.x);
             randomYLocation.y = Random.Range(ybound.transform.position.z, xandybound.transform.position.z);
-            Vector3 randomPos = new Vector3(randomXLocation.x, 0, randomYLocation.z);
+            Vector3 randomPos = new Vector3(randomXLocation.x, 0, randomYLocation.z);       //random transform
 
-            obj.transform.position = BuildingSystem.currentSystem.SnapToGrid(randomPos);
+            obj.transform.position = BuildingSystem.currentSystem.SnapToGrid(randomPos);    //snaps transform to grid
             obj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + 0.3f, obj.transform.position.z);
             BuildingSystem.currentSystem.PlacedObjectLocationOnGrid(obj);
             locationFound = BuildingSystem.currentSystem.MovedObjectLocationOnGrid(obj, false);
-            int rand = Random.Range(0, rotations.Length);
-            //obj.GetComponent<PlaceableTileObject>().Rotate(rotations[rand]);
-            //obj.GetComponentInChildren<Convey>().movement = (directionOfMomentum)rand;
         }
         yield return null;
       

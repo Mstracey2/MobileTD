@@ -7,6 +7,7 @@ public class ScrollAndPinch : MonoBehaviour
     public static ScrollAndPinch pinchSystem;
     public Camera cam;
     protected Plane ground;
+    //these are bools to check what the player is dragging, they are used to stop the camera from moving when sliding menus across etc.
     public bool draggingObject;
     public bool draggingUI;
     public bool scrollingUI;
@@ -23,8 +24,7 @@ public class ScrollAndPinch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!draggingObject && !draggingUI && !scrollingUI)
+        if (!draggingObject && !draggingUI && !scrollingUI)         //if the player is not touching UI
         {
             if (Input.touchCount >= 1)
             {
